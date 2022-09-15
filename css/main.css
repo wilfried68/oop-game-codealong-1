@@ -1,3 +1,15 @@
 body {
-    background-color: green;
+    margin: 0;
+    padding: 0;
+}
+
+#board {
+    height: 100vh;
+    background-color: rgb(186, 204, 206);
+    position: relative;
+}
+
+#player {
+    background-color: rgb(255, 0, 166);
+    position: absolute;
 }
