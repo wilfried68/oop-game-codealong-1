@@ -8,18 +8,33 @@ class Game {
         this.player = new Player();
         this.attachEventListeners();
         
-        //move obstacles
-        setInterval(() => {
-            this.obstacles.forEach( (obstacleInstance) => {
-                obstacleInstance.moveDown();
-            });
-        }, 60);
-
         //create new obstacles
         setInterval(() => {
             const newObstacle = new Obstacle();
             this.obstacles.push(newObstacle);
         }, 3000);
+
+        //move obstacles
+        setInterval(() => {
+            this.obstacles.forEach( (obstacleInstance) => {
+
+                //move
+                obstacleInstance.moveDown();
+
+                //detect collision
+                if (
+                    this.player.positionX < obstacleInstance.positionX + obstacleInstance.width &&
+                    this.player.positionX + this.player.width > obstacleInstance.positionX &&
+                    this.player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
+                    this.player.height + this.player.positionY > obstacleInstance.positionY
+                ) {
+                    location.href = 'gameover.html';
+                }
+
+            });
+        }, 60);
+
+
     }
     attachEventListeners(){
         document.addEventListener("keydown", (event) => {
