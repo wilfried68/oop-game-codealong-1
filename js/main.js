@@ -12,7 +12,7 @@ class Game {
         setInterval(() => {
             const newObstacle = new Obstacle();
             this.obstacles.push(newObstacle);
-        }, 3000);
+        }, 1000);
 
         //move obstacles
         setInterval(() => {
@@ -28,11 +28,18 @@ class Game {
                     this.player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
                     this.player.height + this.player.positionY > obstacleInstance.positionY
                 ) {
+                    console.log("game over....")
                     location.href = 'gameover.html';
                 }
 
+                //remove old obstacles
+                if(obstacleInstance.positionY < 0){
+                    obstacleInstance.domElement.remove(); //remove from the dom
+                    this.obstacles.shift(); // remove from the array
+                }
+
             });
-        }, 60);
+        }, 30);
 
 
     }
