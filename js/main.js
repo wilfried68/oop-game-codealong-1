@@ -18,8 +18,8 @@ class Game {
         setInterval(() => {
             this.obstacles.forEach( (obstacleInstance) => {
                 obstacleInstance.moveDown(); //move
-                this.detectCollision(obstacleInstance); //detect collision with current obstacle
-                this.removeObstacleIfOutside(obstacleInstance); //check if we need to remove current obstacle
+//                this.detectCollision(obstacleInstance); //detect collision with current obstacle
+//                this.removeObstacleIfOutside(obstacleInstance); //check if we need to remove current obstacle
             });
         }, 60);
 
